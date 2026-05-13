@@ -123,19 +123,16 @@ public class Main {
 
         // Checking thread status using isAlive()
 
-        while(r.isAlive()) {
+        if(r.isAlive()) {
             System.out.println("Red thread is running...");
-            break;
         }
 
-        while(y.isAlive()) {
+        if(y.isAlive()) {
             System.out.println("Yellow thread is running...");
-            break;
         }
 
-        while(g.isAlive()) {
+        if(g.isAlive()) {
             System.out.println("Green thread is running...");
-            break;
         }
     }
 }
