@@ -1,9 +1,16 @@
-import java.util.Scanner;
+limport java.util.Scanner;
 
-class GenericSort {
+class BubbleSort<T extends Comparable<T>> {
 
-    // Generic Sort Method
-    public static <T extends Comparable<T>> void sort(T arr[]) {
+    T arr[];
+
+    // Constructor
+    BubbleSort(T arr[]) {
+        this.arr = arr;
+    }
+
+    // Generic Bubble Sort Method
+    void sort() {
 
         for(int i = 0; i < arr.length - 1; i++) {
 
@@ -19,67 +26,33 @@ class GenericSort {
         }
     }
 
-    // Generic Display Method
-    public static <T> void display(T arr[]) {
+    // Display Method
+    void display() {
 
-        for(T element : arr) {
-            System.out.print(element + " ");
+        for(T i : arr) {
+            System.out.print(i + " ");
         }
-
-        System.out.println();
     }
+}
+
+public class Main {
 
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("1. Integer Sorting");
-        System.out.println("2. String Sorting");
+        Integer a[] = {45, 12, 67, 10, 5};
 
-        System.out.print("Enter your choice: ");
-        int choice = sc.nextInt();
+        BubbleSort<Integer> b = new BubbleSort<Integer>(a);
 
-        if(choice == 1) {
+        System.out.println("Before Sorting:");
 
-            Integer num[] = new Integer[5];
+        b.display();
 
-            System.out.println("Enter 5 Integer Values:");
+        b.sort();
 
-            for(int i = 0; i < 5; i++) {
-                num[i] = sc.nextInt();
-            }
+        System.out.println("\nAfter Sorting:");
 
-            System.out.println("\nBefore Sorting:");
-            display(num);
-
-            sort(num);
-
-            System.out.println("After Sorting:");
-            display(num);
-
-        }
-
-        else if(choice == 2) {
-
-            String names[] = new String[5];
-
-            System.out.println("Enter 5 Names:");
-
-            for(int i = 0; i < 5; i++) {
-                names[i] = sc.next();
-            }
-
-            System.out.println("\nBefore Sorting:");
-            display(names);
-
-            sort(names);
-
-            System.out.println("After Sorting:");
-            display(names);
-        }
-
-        else {
-            System.out.println("Invalid Choice");
-        }
+        b.display();
     }
 }
