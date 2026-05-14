@@ -1,15 +1,15 @@
 import java.util.Scanner;
 
-class Student implements Comparable<Student> {
+class Student<T> implements Comparable<Student<T>> {
 
-    String usn;
+    T usn;
     String firstName;
     String lastName;
     String branch;
     String division;
 
     // Constructor
-    Student(String usn, String firstName, String lastName,
+    Student(T usn, String firstName, String lastName,
             String branch, String division) {
 
         this.usn = usn;
@@ -20,8 +20,8 @@ class Student implements Comparable<Student> {
     }
 
     // compareTo() for USN sorting
-    public int compareTo(Student s) {
-        return this.usn.compareTo(s.usn);
+    public int compareTo(Student<T> s) {
+        return this.usn.toString().compareTo(s.usn.toString());
     }
 
     // Display method
@@ -37,12 +37,12 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        Student s[] = new Student[3];
+        Student<String> s[] = new Student[3];
 
         // Input
-        s[0] = new Student("4SU23CS003", "Rahul", "Patil", "CSE", "B");
-        s[1] = new Student("4SU23CS001", "Aman", "Kumar", "ISE", "A");
-        s[2] = new Student("4SU23CS002", "Vikas", "Sharma", "CSE", "C");
+        s[0] = new Student<String>("4SU23CS003", "Rahul", "Patil", "CSE", "B");
+        s[1] = new Student<String>("4SU23CS001", "Aman", "Kumar", "ISE", "A");
+        s[2] = new Student<String>("4SU23CS002", "Vikas", "Sharma", "CSE", "C");
 
         System.out.println("1. Sort by USN");
         System.out.println("2. Sort by First Name");
@@ -76,7 +76,7 @@ public class Main {
 
                 if(swap) {
 
-                    Student temp = s[j];
+                    Student<String> temp = s[j];
                     s[j] = s[j + 1];
                     s[j + 1] = temp;
                 }
